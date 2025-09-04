@@ -282,3 +282,50 @@ ul {
 .example-2 .icon-content a[data-social="whatsapp"] ~ .tooltip {
   background-color: #25D366; /* WhatsApp green */
 }
+/* Mobile */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .hero {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+
+  .hero-img img {
+    width: 200px;
+    margin-bottom: 1rem;
+  }
+
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  form {
+    width: 100%;
+    padding: 0 1rem;
+  }
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .hero {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+
+  .hero-img img {
+    width: 250px;
+  }
+}
