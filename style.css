@@ -565,7 +565,14 @@ ul {
   }
   
   .grid {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+  }
+  
+  .card {
+    min-width: 320px;
+    width: 320px;
   }
 }
 
