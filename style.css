@@ -283,3 +283,41 @@ ul {
   background-color: #25D366; /* WhatsApp green */
 }
 
+/* Tablet */
+@media (max-width: 1024px) {
+  body{
+
+background-color: #111;
+  }
+  .hero {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+
+  .hero-img img {
+    width: 250px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: row; /* زي الـ PC */
+    text-align: left;
+  }
+
+  .hero-img img {
+    width: 200px;
+    max-width: 100%;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+}
