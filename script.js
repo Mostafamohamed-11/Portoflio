@@ -8,6 +8,11 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
   });
 });
 
+
+
+
+
+
 // Initialize EmailJS
 // Initialize EmailJS
 (function() {
