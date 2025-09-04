@@ -297,7 +297,7 @@ background-color: #111;
     text-align: left;
   }
   .about{
-    flex-direction: row; /* زي الـ PC */
+   width: auto;
     text-align: left;
   }
 
