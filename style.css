@@ -328,4 +328,10 @@ ul {
   .hero-img img {
     width: 250px;
   }
+  @media (max-width: 768px) {
+  body {
+    background: lightblue !important;
+  }
+}
+
 }
