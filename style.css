@@ -296,6 +296,10 @@ background-color: #111;
     flex-direction: row; /* زي الـ PC */
     text-align: left;
   }
+  .about{
+    flex-direction: row; /* زي الـ PC */
+    text-align: left;
+  }
 
   .hero-img img {
     width: 200px;
