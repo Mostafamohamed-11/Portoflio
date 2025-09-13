@@ -174,6 +174,91 @@ a {
   width: 100%;
   filter: drop-shadow(0 0 23px var(--animation-color));
 }
+/* Reset */
+.btn-12,
+.btn-12 *,
+.btn-12::after,
+.btn-12::before {
+  box-sizing: border-box;
+  border: 0 solid;
+}
+
+/* Button Styling */
+.btn-12 {
+  display: inline-block;
+  background: #000;
+  color: #0274b3;
+  font-weight: 700;
+  font-size: 0.9rem;   /* smaller size */
+  text-transform: uppercase;
+  padding: 0.5rem 1.5rem; /* minimized padding */
+  border-radius: 50px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* Gradient Animation */
+.btn-12::before,
+.btn-12::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    #0274b3 25%,
+    transparent 0,
+    transparent 50%,
+    #0274b3 0,
+    #0274b3 75%,
+    transparent 0
+  );
+  transform: translateY(var(--progress, 100%));
+  transition: transform 0.25s ease;
+  z-index: -1;
+}
+.btn-12::after {
+  --progress: -100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0,
+    transparent 25%,
+    #0274b3 0,
+    #0274b3 50%,
+    transparent 0,
+    transparent 75%,
+    #0274b3 0
+  );
+}
+.btn-12:hover::before,
+.btn-12:hover::after {
+  --progress: 0;
+}
+
+/* Text disappearing effect */
+.btn-12 span {
+  position: relative;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+.btn-12 span::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  color: #0274b3;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: width 0.5s ease;
+}
+
+/* On hover → text disappears from right to left */
+.btn-12:hover span::after {
+  width: 0;
+}
+
 
 /* Hero Image */
 .hero-img { 
@@ -204,34 +289,6 @@ a {
   margin: 0 auto;
 }
 
-.profile-pic { 
-  width: clamp(150px, 25vw, 200px);
-  height: clamp(150px, 25vw, 200px);
-  border-radius: 50%; 
-  border: 3px solid rgb(17, 18, 18);
-  object-fit: cover;
-}
-
-.skills { 
-  flex: 1;
-  min-width: 280px;
-}
-
-.skills .skill { 
-  margin: 1rem 0; 
-}
-
-.bar { 
-  background: #333; 
-  height: 10px; 
-  border-radius: 5px; 
-  overflow: hidden; 
-}
-
-.fill { 
-  background: rgb(7, 7, 7); 
-  height: 100%; 
-}
 
 /* Projects */
 .projects { 
@@ -251,8 +308,8 @@ a {
   position: relative;
   width: 100%;
   max-width: 350px;
-  height: 340px;
-  background-color: #f2f2f2;
+  height: 330px;
+  background-color: #fffbfb;
   border-radius: 10px;
   display: flex;
   align-items: center;
