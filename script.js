@@ -1,121 +1,154 @@
-// Smooth scroll for nav links
+/* ================= Smooth Scroll ================= */
 document.querySelectorAll('a[href^="#"]').forEach(link => {
   link.addEventListener('click', e => {
+    const target = document.querySelector(link.getAttribute('href'));
+    if (!target) return;
     e.preventDefault();
-    document.querySelector(link.getAttribute('href')).scrollIntoView({
-      behavior: 'smooth'
-    });
+    target.scrollIntoView({ behavior: 'smooth' });
   });
 });
 
+/* ================= Typing Effect ================= */
+const typingEl = document.getElementById("typing");
 
+if (typingEl) {
+  const roles = [
+    "Software Tester",
+    "QA Engineer",
+    "Bug Hunter",
+    "Quality Advocate"
+  ];
 
+  let roleIndex = 0;
+  let charIndex = 0;
+  let deleting = false;
 
+  function type() {
+    const current = roles[roleIndex];
+    typingEl.textContent = deleting
+      ? current.substring(0, charIndex--)
+      : current.substring(0, charIndex++);
 
+    if (charIndex === current.length + 1) deleting = true;
+    if (charIndex === 0 && deleting) {
+      deleting = false;
+      roleIndex = (roleIndex + 1) % roles.length;
+    }
 
-// Initialize EmailJS
-// Initialize EmailJS
-(function() {
-  emailjs.init("PmTjHp7crnDNs2zEu"); // Replace with your Public Key
+    setTimeout(type, deleting ? 70 : 120);
+  }
+
+  type();
+}
+
+/* ================= EmailJS ================= */
+(function () {
+  emailjs.init("PmTjHp7crnDNs2zEu");
 })();
 
-// Select form and status element
 const form = document.getElementById("contactForm");
 const status = document.getElementById("formStatus");
 
-// Handle form submission
-form.addEventListener("submit", function(e) {
-  e.preventDefault();
+if (form) {
+  form.addEventListener("submit", e => {
+    e.preventDefault();
 
-  emailjs.sendForm("service_portflio", "template_wnmpv2r", form)
-    .then(() => {
-      status.textContent = "✅ Thanks! Your message has been sent.";
+    emailjs.sendForm(
+      "service_portflio",
+      "template_wnmpv2r",
+      form
+    ).then(() => {
+      status.textContent = "Message sent successfully!";
       status.style.color = "limegreen";
       form.reset();
-    }, (err) => {
-      status.textContent = "❌ Failed to send message. Try again.";
+    }).catch(() => {
+      status.textContent = "Failed to send message.";
       status.style.color = "red";
-      console.error("Error:", err);
     });
+  });
+}
+
+// Scroll Animation
+const items = document.querySelectorAll('.timeline-item');
+
+function revealTimeline() {
+  const triggerBottom = window.innerHeight * 0.85;
+  items.forEach(item => {
+    const top = item.getBoundingClientRect().top;
+    if(top < triggerBottom) {
+      item.classList.add('show');
+    }
+  });
+}
+
+const certificates = document.querySelectorAll('.certificate-img');
+
+certificates.forEach(img => {
+  const popup = document.getElementById(img.dataset.target);
+
+  // Track whether the mouse is on image or popup
+  let isHovering = false;
+
+  function showPopup() {
+    popup.classList.add('show');
+    isHovering = true;
+  }
+
+  function hidePopup() {
+    isHovering = false;
+    // Delay a little to allow moving from image to popup
+    setTimeout(() => {
+      if (!isHovering) {
+        popup.classList.remove('show');
+      }
+    }, 50); // 50ms delay, adjust if needed
+  }
+
+  // Hover over image
+  img.addEventListener('mouseenter', showPopup);
+  img.addEventListener('mouseleave', hidePopup);
+
+  // Hover over popup
+  popup.addEventListener('mouseenter', () => {
+    isHovering = true;
+    popup.classList.add('show');
+  });
+  popup.addEventListener('mouseleave', hidePopup);
 });
 
-// Project Slider Navigation
-document.addEventListener('DOMContentLoaded', function() {
-    const grid = document.querySelector('.grid');
-    const prevBtn = document.querySelector('.nav-arrow.prev');
-    const nextBtn = document.querySelector('.nav-arrow.next');
-    const cards = document.querySelectorAll('.card');
-    
-    if (!grid || !prevBtn || !nextBtn) return;
-    
-    const cardWidth = 350 + 24; // card width + gap
-    let currentIndex = 0;
-    const maxIndex = Math.max(0, cards.length - Math.floor(grid.offsetWidth / cardWidth));
-    
-    function updateButtons() {
-        prevBtn.disabled = currentIndex <= 0;
-        nextBtn.disabled = currentIndex >= maxIndex;
-    }
-    
-    function scrollToPosition(index) {
-        const scrollPosition = index * cardWidth;
-        grid.scrollTo({
-            left: scrollPosition,
-            behavior: 'smooth'
-        });
-        currentIndex = index;
-        updateButtons();
-    }
-    
-    prevBtn.addEventListener('click', function() {
-        if (currentIndex > 0) {
-            scrollToPosition(currentIndex - 1);
-        }
-    });
-    
-    nextBtn.addEventListener('click', function() {
-        if (currentIndex < maxIndex) {
-            scrollToPosition(currentIndex + 1);
-        }
-    });
-    
-    // Touch/swipe support for mobile
-    let isDown = false;
-    let startX;
-    let scrollLeft;
-    
-    grid.addEventListener('mousedown', (e) => {
-        isDown = true;
-        startX = e.pageX - grid.offsetLeft;
-        scrollLeft = grid.scrollLeft;
-    });
-    
-    grid.addEventListener('mouseleave', () => {
-        isDown = false;
-    });
-    
-    grid.addEventListener('mouseup', () => {
-        isDown = false;
-    });
-    
-    grid.addEventListener('mousemove', (e) => {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.pageX - grid.offsetLeft;
-        const walk = (x - startX) * 2;
-        grid.scrollLeft = scrollLeft - walk;
-    });
-    
-    // Initialize
-    updateButtons();
-    
-    // Update on resize
-    window.addEventListener('resize', function() {
-        const newMaxIndex = Math.max(0, cards.length - Math.floor(grid.offsetWidth / cardWidth));
-        if (currentIndex > newMaxIndex) {
-            scrollToPosition(newMaxIndex);
-        } else {
-            updateButtons();
-        }
-    });
+
+const projects = document.querySelectorAll('.project-img');
+
+projects.forEach(img => {
+  const popup = document.getElementById(img.dataset.target);
+
+  // Track whether the mouse is on image or popup
+  let isHovering = false;
+
+  function showPopup() {
+    popup.classList.add('show');
+    isHovering = true;
+  }
+
+  function hidePopup() {
+    isHovering = false;
+    // Delay to allow moving from image to popup
+    setTimeout(() => {
+      if (!isHovering) {
+        popup.classList.remove('show');
+      }
+    }, 50);
+  }
+
+  // Hover over image
+  img.addEventListener('mouseenter', showPopup);
+  img.addEventListener('mouseleave', hidePopup);
+
+  // Hover over popup
+  popup.addEventListener('mouseenter', () => {
+    isHovering = true;
+    popup.classList.add('show');
+  });
+
+  popup.addEventListener('mouseleave', hidePopup);
 });
