@@ -152,3 +152,11 @@ projects.forEach(img => {
 
   popup.addEventListener('mouseleave', hidePopup);
 });
+window.addEventListener('scroll', () => {
+  if (document.querySelector('.certificate-popup.show') || document.querySelector('.project-popup.show')) {
+    document.body.classList.add('scrolling');
+    setTimeout(() => {
+      document.body.classList.remove('scrolling');
+    }, 100); // Adjust delay if needed
+  }
+});
