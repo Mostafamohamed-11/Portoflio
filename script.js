@@ -157,6 +157,6 @@ window.addEventListener('scroll', () => {
     document.body.classList.add('scrolling');
     setTimeout(() => {
       document.body.classList.remove('scrolling');
-    }, 100); // Adjust delay if needed
+    }, 10); // Adjust delay if needed
   }
 });
