@@ -643,15 +643,24 @@ ul {
 @media (max-width: 480px) {
   .certificate-img,
   .project-img {
-    width: 220px;
-    height: 220px;
+    width: 100%;       /* fill container */
+  max-width: 300px;  /* maximum size */
+  height: auto;      /* maintain aspect ratio */
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  transition: transform 0.3s ease;
   }
 
   .certificate-popup,
   .project-popup {
-    width: 85%;
-    max-width: 250px;
-    padding: 12px;
+    width: 100%;       /* fill container */
+  max-width: 300px;  /* maximum size */
+  height: auto;      /* maintain aspect ratio */
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  
     font-size: 13px;
   }
 }
