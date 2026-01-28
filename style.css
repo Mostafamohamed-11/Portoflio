@@ -641,28 +641,52 @@ ul {
 
 /* Phones */
 @media (max-width: 480px) {
-  .certificate-img,
-  .project-img {
-    width: 100%;       /* fill container */
-  max-width: 300px;  /* maximum size */
-  height: auto;      /* maintain aspect ratio */
+  
+  .hero,
+.projects-grid,
+.certificates-grid ,.contact ,.about{
+  width: 100%;          /* fit most of the screen */
+  max-width: 1200px;   /* don’t get too wide on desktop */
+  margin: 0 auto;      /* center content */
+  box-sizing: border-box;
+}
+/* Certificate and project images */
+.certificate-img,
+.project-img {
+  width: 100%;         /* fill container */
+  max-width: 300px;    /* limits size on tablet/desktop */
+  height: auto;        /* keep aspect ratio */
   border-radius: 12px;
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
   cursor: pointer;
   transition: transform 0.3s ease;
-  }
+  display: block;
+  margin: 0 auto;
+}
+/* Wrappers limit images */
+.certificate-wrapper,
+.project-wrapper {
+  width: 100%;
+  max-width: 300px;  /* same as images */
+  margin: 0 auto;
+}
+.certificate-popup,
+.project-popup {
+  width: 90%;          /* fit screen */
+  max-width: 300px;    /* limit size */
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 14px;
+  text-align: center;
+}
 
+@media (max-width: 480px) {
   .certificate-popup,
   .project-popup {
-    width: 100%;       /* fill container */
-  max-width: 300px;  /* maximum size */
-  height: auto;      /* maintain aspect ratio */
-  border-radius: 12px;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
-  cursor: pointer;
-  
+    max-width: 250px;
     font-size: 13px;
   }
+}
 }
 
 /* Very small phones */
