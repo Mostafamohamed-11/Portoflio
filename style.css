@@ -653,8 +653,8 @@ ul {
 /* Certificate and project images */
 .certificate-img,
 .project-img {
-  width: 100%;         /* fill container */
-  max-width: 300px;    /* limits size on tablet/desktop */
+  width: 80%;         /* fill container */
+  max-width: 250px;    /* limits size on tablet/desktop */
   height: auto;        /* keep aspect ratio */
   border-radius: 12px;
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
