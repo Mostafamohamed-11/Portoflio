@@ -152,11 +152,14 @@ projects.forEach(img => {
 
   popup.addEventListener('mouseleave', hidePopup);
 });
+// Select all popups
+const popups = document.querySelectorAll('.certificate-popup, .project-popup');
+
+// Hide popups on scroll
 window.addEventListener('scroll', () => {
-  if (document.querySelector('.certificate-popup.show') || document.querySelector('.project-popup.show')) {
-    document.body.classList.add('scrolling');
-    setTimeout(() => {
-      document.body.classList.remove('scrolling');
-    }, 10); // Adjust delay if needed
-  }
+  popups.forEach(popup => {
+    if (popup.classList.contains('show')) {
+      popup.classList.remove('show');
+    }
+  });
 });
