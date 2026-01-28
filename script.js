@@ -152,14 +152,21 @@ projects.forEach(img => {
 
   popup.addEventListener('mouseleave', hidePopup);
 });
+
 // Select all popups
 const popups = document.querySelectorAll('.certificate-popup, .project-popup');
 
-// Hide popups on scroll
-window.addEventListener('scroll', () => {
+// Function to hide popups
+function hidePopups() {
   popups.forEach(popup => {
     if (popup.classList.contains('show')) {
       popup.classList.remove('show');
     }
   });
-});
+}
+
+// Listen for normal scrolling
+window.addEventListener('scroll', hidePopups);
+
+// Listen for mobile touch scrolling
+window.addEventListener('touchmove', hidePopups);
