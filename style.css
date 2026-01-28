@@ -683,9 +683,9 @@ ul {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   }
  
-  .popup {
-    width: 90%;
-    max-width: 320px;
+  .certificate-popup, .project-popup {
+    width: 50%;
+    max-width: 220px;
     padding: 15px;
     font-size: 14px;
     border-radius: 8px;
